@@ -39,3 +39,16 @@ pre-commit:
   commands:
     format-and-lint:
       run: pnpm biome check {staged_files} --write
+
+prepare-commit-msg:
+  commands:
+    commitzen:
+      interactive: true
+      run: pnpm cz
+      env:
+        LEFTHOOK: 0
+
+commit-msg:
+  commands:
+    "lint commit message":
+      run: pnpm commitlint --edit {1}
